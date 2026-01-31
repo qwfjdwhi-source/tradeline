@@ -93,10 +93,11 @@
             border: 2px solid rgba(255,255,255,0.1);
             transition: all 0.4s ease;
             position: relative;
+            cursor: pointer;
         }
         
         .product-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             border-color: rgba(255,107,107,0.5);
             box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
@@ -127,82 +128,169 @@
             border-bottom: 2px solid rgba(255,255,255,0.1);
         }
         
-        .product-info {
-            padding: 25px;
+        .product-images-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
         }
         
-        .product-name {
-            font-size: 28px;
+        .product-images-grid img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .product-info-preview {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-name-preview {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .product-price-preview {
+            font-size: 36px;
+            font-weight: 800;
+            color: #feca57;
+        }
+        
+        .product-price-preview span {
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .click-hint {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            max-width: 800px;
+            margin: 50px auto;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 2px solid rgba(255,107,107,0.3);
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-title {
+            font-size: 32px;
             font-weight: 800;
             margin-bottom: 10px;
             color: #fff;
         }
         
-        .product-tagline {
-            font-size: 16px;
+        .modal-tagline {
+            font-size: 18px;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
-        .product-price {
-            font-size: 42px;
+        .modal-price {
+            font-size: 48px;
             font-weight: 800;
             color: #feca57;
             margin-bottom: 5px;
         }
         
-        .product-price span {
-            font-size: 18px;
-            color: rgba(255,255,255,0.8);
-        }
-        
-        .product-shipping {
+        .modal-shipping {
             color: rgba(255,255,255,0.6);
-            font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
-        .features-list {
+        .modal-features {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .modal-features h3 {
+            color: #feca57;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .modal-features ul {
             list-style: none;
-            margin-bottom: 20px;
         }
         
-        .features-list li {
-            padding: 8px 0;
+        .modal-features li {
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            font-size: 15px;
+            font-size: 16px;
         }
         
-        .features-list li:last-child {
+        .modal-features li:last-child {
             border-bottom: none;
         }
         
-        .features-list i {
-            color: #feca57;
+        .modal-features i {
+            color: #4CAF50;
             margin-left: 10px;
         }
         
-        .order-btn {
+        .modal-cta {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: #fff;
-            padding: 18px;
+            padding: 20px;
             border-radius: 15px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s ease;
             width: 100%;
             border: none;
             cursor: pointer;
-        }
-        
-        .order-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
         }
         
         /* Contact Section */
@@ -281,8 +369,9 @@
         
         @media (max-width: 768px) {
             .store-title { font-size: 32px; }
-            .product-name { font-size: 24px; }
-            .product-price { font-size: 36px; }
+            .modal-content { margin: 20px; }
+            .modal-title { font-size: 26px; }
+            .modal-price { font-size: 40px; }
             .products-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -304,74 +393,123 @@
     <section class="products-container">
         <div class="container">
             <h2 class="section-title">🛍️ منتجاتنا</h2>
+            <p style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 30px;">👆 اضغط على أي منتج لمعرفة التفاصيل</p>
             
             <div class="products-grid">
                 <!-- Product 1: Diffuser -->
-                <div class="product-card">
+                <div class="product-card" onclick="openProductModal('diffuser')">
                     <div class="product-badge">🔥 الأكثر مبيعاً</div>
                     <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/product1.jpg" 
                          alt="فواحة الاسترخاء" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-name">🕯️ فواحة الاسترخاء</h3>
-                        <p class="product-tagline">جو هادئ وراحة نفسية في كل مكان</p>
-                        
-                        <div class="product-price">
+                    <div class="product-info-preview">
+                        <h3 class="product-name-preview">🕯️ فواحة الاسترخاء</h3>
+                        <div class="product-price-preview">
                             250 <span>جنيه</span>
                         </div>
-                        <p class="product-shipping">✅ شامل التوصيل لأي مكان في مصر</p>
-                        
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> بخار خفيف مع ريحة مريحة</li>
-                            <li><i class="fas fa-check"></i> إضاءة LED هادية</li>
-                            <li><i class="fas fa-check"></i> شحن USB - تشتغل في أي مكان</li>
-                            <li><i class="fas fa-check"></i> سهلة الاستخدام</li>
-                            <li><i class="fas fa-check"></i> مناسبة كهدية</li>
-                        </ul>
-                        
-                        <a href="https://wa.me/201016508870?text=السلام%20عليكم%0Aعايز%20أطلب%20فواحة%20الاسترخاء%0Aالسعر:%20250%20جنيه" 
-                           class="order-btn" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب الآن
-                        </a>
+                        <p class="click-hint">اضغط للتفاصيل 👆</p>
                     </div>
                 </div>
                 
                 <!-- Product 2: Tornado Mug -->
-                <div class="product-card">
+                <div class="product-card" onclick="openProductModal('tornado')">
                     <div class="product-badge limited">💥 كمية محدودة</div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                            <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/mug-tornado.jpg" 
-                                 alt="مج التورنيدو الذكي" style="width: 100%; height: 130px; object-fit: cover; border-radius: 10px;">
-                            <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/mug-tornado-2.jpg" 
-                                 alt="مج التورنيدو الذكي" style="width: 100%; height: 130px; object-fit: cover; border-radius: 10px;">
-                        </div>
-                    <div class="product-info">
-                        <h3 class="product-name">🌀 مج التورنيدو الذكي</h3>
-                        <p class="product-tagline">الإعصار بين إيديك! ⚡</p>
-                        
-                        <div class="product-price">
+                    <div class="product-images-grid">
+                        <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/mug-tornado.jpg" 
+                             alt="مج التورنيدو الذكي">
+                        <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/mug-tornado-2.jpg" 
+                             alt="مج التورنيدو الذكي">
+                    </div>
+                    <div class="product-info-preview">
+                        <h3 class="product-name-preview">🌀 مج التورنيدو الذكي</h3>
+                        <div class="product-price-preview">
                             199 <span>جنيه</span>
                         </div>
-                        <p class="product-shipping">🚚 التوصيل حسب المحافظة | ✅ معاينة قبل الاستلام</p>
-                        
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> قلاب أوتوماتيك داخلي</li>
-                            <li><i class="fas fa-check"></i> تصميم خشبي أنيق</li>
-                            <li><i class="fas fa-check"></i> شحن USB Type-C</li>
-                            <li><i class="fas fa-check"></i> سعة 400 مل</li>
-                            <li><i class="fas fa-check"></i> يخلط كل المشروبات</li>
-                        </ul>
-                        
-                        <a href="https://wa.me/201016508870?text=السلام%20عليكم%0Aعايز%20أطلب%20مج%20التورنيدو%20الذكي%0Aالسعر:%20199%20جنيه" 
-                           class="order-btn" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            اطلب الآن
-                        </a>
+                        <p class="click-hint">اضغط للتفاصيل 👆</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Product Modal: Diffuser -->
+    <div id="modal-diffuser" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('diffuser')">✕</button>
+            <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/product1.jpg" 
+                 alt="فواحة الاسترخاء" class="modal-image">
+            <div class="modal-body">
+                <h2 class="modal-title">🕯️ فواحة الاسترخاء</h2>
+                <p class="modal-tagline">جو هادئ وراحة نفسية في كل مكان ✨</p>
+                
+                <div class="modal-price">250 جنيه</div>
+                <p class="modal-shipping">✅ شامل التوصيل لأي مكان في مصر</p>
+                
+                <div class="modal-features">
+                    <h3>✨ المميزات</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> بخار خفيف مع ريحة مريحة للأعصاب</li>
+                        <li><i class="fas fa-check-circle"></i> إضاءة LED هادية بتدي جو راحة واسترخاء</li>
+                        <li><i class="fas fa-check-circle"></i> شحن USB - تشتغل في البيت، العربية أو المكتب</li>
+                        <li><i class="fas fa-check-circle"></i> شكلها شيك جداً ومناسبة كهدية لأي حد</li>
+                        <li><i class="fas fa-check-circle"></i> سهلة الاستخدام: مية + نقطة عطر وخلاص!</li>
+                    </ul>
+                </div>
+                
+                <a href="https://wa.me/201016508870?text=السلام%20عليكم%0Aعايز%20أطلب%20فواحة%20الاسترخاء%0Aالسعر:%20250%20جنيه" 
+                   class="modal-cta" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الآن عبر واتساب
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Product Modal: Tornado Mug -->
+    <div id="modal-tornado" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('tornado')">✕</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+                <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/mug-tornado.jpg" 
+                     alt="مج التورنيدو" style="width: 100%; height: 350px; object-fit: cover;">
+                <img src="https://raw.githubusercontent.com/qwfjdwhi-source/tradeline/main/mug-tornado-2.jpg" 
+                     alt="مج التورنيدو" style="width: 100%; height: 350px; object-fit: cover;">
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title">🌀 مج التورنيدو الذكي</h2>
+                <p class="modal-tagline">الإعصار بين إيديك! ⚡</p>
+                
+                <div class="modal-price">199 جنيه</div>
+                <p class="modal-shipping">🚚 التوصيل حسب المحافظة | ✅ معاينة قبل الاستلام</p>
+                
+                <div class="modal-features">
+                    <h3>🌟 إيه اللي بيميزه؟</h3>
+                    <ul>
+                        <li><i class="fas fa-sync-alt"></i> قلاب أوتوماتيك داخلي بيخلط المشروب في ثواني</li>
+                        <li><i class="fas fa-tree"></i> تصميم خشبي أنيق يخطف الأنظار</li>
+                        <li><i class="fas fa-plug"></i> شحن USB Type-C - تاخده معاك في أي مكان</li>
+                        <li><i class="fas fa-glass-whiskey"></i> سعة 400 مل - الحجم المثالي</li>
+                        <li><i class="fas fa-blender"></i> بيخلط القهوة، العصير، البروتين، الأعشاب، والأدوية</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-features">
+                    <h3>👤 مناسب لمين؟</h3>
+                    <ul>
+                        <li><i class="fas fa-coffee"></i> عشاق القهوة اللي بيحبوا السرعة</li>
+                        <li><i class="fas fa-dumbbell"></i> الرياضيين اللي بيشربوا البروتين يومياً</li>
+                        <li><i class="fas fa-lemon"></i> محبي العصاير والسموذي الطازج</li>
+                        <li><i class="fas fa-leaf"></i> الناس اللي بتحب الأعشاب والمشروبات الصحية</li>
+                    </ul>
+                </div>
+                
+                <a href="https://wa.me/201016508870?text=السلام%20عليكم%0Aعايز%20أطلب%20مج%20التورنيدو%20الذكي%0Aالسعر:%20199%20جنيه" 
+                   class="modal-cta" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الآن - العرض لفترة محدودة!
+                </a>
+            </div>
+        </div>
+    </div>
     
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
@@ -407,5 +545,25 @@
        class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+    
+    <script>
+        function openProductModal(product) {
+            document.getElementById('modal-' + product).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(product) {
+            document.getElementById('modal-' + product).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
 </body>
 </html>
